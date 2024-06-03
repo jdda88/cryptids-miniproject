@@ -1,6 +1,7 @@
 import axios from "axios";
 import React, { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
+import EditLastSeen from "../pages/EditLastSeen";
 
 
 const API_URL = "https://cats-dogs-123123.adaptable.app/monsters/";
@@ -45,6 +46,7 @@ function MonsterCard() {
           </div>
         </div>
       )}{" "}
+      <EditLastSeen/>
     </div>
   );
 }
