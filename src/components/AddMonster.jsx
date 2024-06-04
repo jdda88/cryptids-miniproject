@@ -2,15 +2,16 @@ import { useState } from "react";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
 import { Modal, Button } from "bootstrap";
+import toast from "react-hot-toast";
 
-
-function AddMonsterForm() {
+function AddMonsterForm({ fetchMonsters }) {
   const [name, setName] = useState("");
   const [description, setDescription] = useState("");
   const [location, setLocation] = useState("");
   const [type, setType] = useState("");
   const [rating, setRating] = useState(0);
   const [instructions, setInstructions] = useState("");
+  const [lastSeen, setLastSeen] = useState("");
   const [image, setImage] = useState("");
 
   const navigate = useNavigate();
@@ -21,6 +22,7 @@ function AddMonsterForm() {
   const handleType = (e) => setType(e.target.value);
   const handleRating = (e) => setRating(e.target.value);
   const handleInstructions = (e) => setInstructions(e.target.value);
+  const handleLastSeen = (e) => setLastSeen(e.target.value);
   const handleImage = (e) => setImage(e.target.value);
 
   const handleSubmit = async (e) => {
@@ -36,10 +38,18 @@ function AddMonsterForm() {
           type,
           rating,
           instructions,
+          lastSeen,
           image,
         }
       );
-      navigate("/monsters");
+      if(response.status === 200 || response.status === 201){
+const modal = document.getElementById("MonsterFormModal") 
+      const modalInstance = bootstrap.Modal.getInstance(modal)
+      modalInstance.hide()
+      toast.success("Monster created Successfully!")
+      }
+      
+     fetchMonsters();
     } catch (error) {
       console.log(error);
     }
@@ -56,7 +66,7 @@ function AddMonsterForm() {
         Add a Cryptid to the list
       </button>
       <div
-        className="modal fade"
+        className="modal"
         id="MonsterFormModal"
         tabIndex="-1"
         role="dialog"
@@ -131,6 +141,16 @@ function AddMonsterForm() {
                   placeholder="Instructions to invoke the creature, protect yourself from it, etc."
                   value={instructions}
                   onChange={handleInstructions}
+                />
+                <label>Last Seen: </label>
+                <input
+                  className="form-control"
+                  name="instructions"
+                  type="text"
+                  required
+                  placeholder="Specify the last place the creature was seen."
+                  value={lastSeen}
+                  onChange={handleLastSeen}
                 />
                 <label>Image</label>
                 <input

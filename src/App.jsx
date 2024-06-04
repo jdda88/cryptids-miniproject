@@ -8,6 +8,7 @@ import { Route, Routes } from "react-router-dom";
 import NotFound from "./pages/NotFound.jsx";
 import MonsterCard from "./components/MonsterCard.jsx";
 import AddMonsterForm from "./components/AddMonster.jsx";
+import { Toaster } from "react-hot-toast";
 
 function App() {
   return (
@@ -15,6 +16,8 @@ function App() {
       <div>
         
         <Navbar />
+
+        <Toaster />
         <Routes>
           <Route path="/" element={<HomePage />} />
           <Route path="/about" element={<About />} />
