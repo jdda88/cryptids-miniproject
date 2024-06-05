@@ -29,25 +29,27 @@ function MonsterList() {
   };
 
   return (
-    <div >
+    <div>
       <br />
-      <div className="container d-flex flex-wrap" >
+      <div className="container d-flex flex-wrap justify-content-center align-items-center">
         <div>
           <AddMonsterForm monsters={monsters} fetchMonsters={fetchMonsters} />
         </div>
         {monsters &&
           monsters.map((monster) => (
-            <div  className="col-md-3 mb-4" key={monster.id} >
-              <div className="card" >
+            <div id="monster-card-container" className="col-md-3 m-5 " key={monster.id}>
+              <div className="card w-100 ">
                 <img
                   className="card-img-top"
-                  src="https://res.cloudinary.com/dprkq4xne/image/upload/v1717443707/Monster-project/cthulhu_e0zzvu.png"
+                  src={monster.image}
                   alt="Card image"
                 />
-                <div className="card-body">
-                  <h4 className="card-title">{monster.name}</h4>
-                  <Link to={`/MonsterCard/${monster.id}`}>
-                    <button className="btn btn-primary">See Profile</button>
+                <div className="card-body text-center">
+                  <h4 id="monster-name"  style={{ color: "white" }}>
+                    {monster.name}
+                  </h4>
+                  <Link to={`/monster-card/${monster.id}`}>
+                    <button id="see-profile" type="button" className="btn btn-outline-dark">See Profile</button>
                   </Link>
                 </div>
               </div>

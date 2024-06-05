@@ -26,7 +26,7 @@ function DeleteMonster({ monster }) {
 
   return (
     <div className="text-center">
-        <a className="btn btn-outline-danger" onClick={handleDelete}>Delete this monster</a>
+        <a id="delete-button" className="btn btn-outline-dark" onClick={handleDelete}>Delete this monster</a>
     </div>
   );
 }

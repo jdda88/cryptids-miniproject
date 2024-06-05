@@ -29,7 +29,6 @@ function EditLastSeen({ monster, fetchSingleMonster }) {
               className="sr-only"
               htmlFor="lastSeen"
             >
-              Update Last Seen:
             </label>
             <input
               className="form-control mb-2"
@@ -38,6 +37,7 @@ function EditLastSeen({ monster, fetchSingleMonster }) {
               value={updateLastSeen}
               onChange={(e) => setUpdateLastSeen(e.target.value)}
               required
+              placeholder="Update Last Seen..."
             />
           </div>
           <div className="col-auto">

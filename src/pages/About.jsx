@@ -2,17 +2,23 @@ import React from 'react'
 
 function About() {
   return (
-    <div className="d-flex justify-content-center align-items-center flex-column gap-5 m-5" style={{ color: 'white', fontSize: '20px' }}>
-      <h1>About</h1><p>
+    <div className="d-flex justify-content-center align-items-center flex-column gap-5 m-5" style={{ fontSize: '20px' }}>
+      <h1>About</h1>
+      <p className='w-50 text-center'>
         Welcome to our cryptids website! We are Anna and JD, two
         coding enthusiasts combining our love for cryptozoology with
         our journey into programming. Join us as we explore the
-        world's most intriguing cryptids through our new website! <br />
-         About Anna <br />
-          dxcfvgbhjn <br />
-         About JD <br />
-          rtcytvyubui 
-      </p>
+        world's most intriguing cryptids through our new website!</p> <br />
+         <h2>about Anna</h2><br />
+          <p className='w-50 text-center' >dxcfvgbhjn</p> <br />
+         <h3>about JD </h3><br />
+          <p className='w-50 text-center'> rtcytvyubui</p> 
+          <br />
+          <br />
+          <br />
+          <br />
+          <br />
+          <br />
       </div>
   )
 }

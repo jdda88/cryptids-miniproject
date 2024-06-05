@@ -9,24 +9,35 @@ import NotFound from "./pages/NotFound.jsx";
 import MonsterCard from "./components/MonsterCard.jsx";
 import AddMonsterForm from "./components/AddMonster.jsx";
 import { Toaster } from "react-hot-toast";
-
+import MonsterDetails from "./pages/MonsterDetails.jsx";
+import RealatedLinks from "./pages/RealatedLinks.jsx";
+import { useState, useEffect } from "react";
 function App() {
+ 
+  const [favorites, setFavorites] = useState([])
+  const monsterStorage = localStorage.getItem("favoritesArray")
+
+  useEffect(() => {
+    setFavorites(JSON.parse(monsterStorage) || [])
+  }, [])
   return (
     <>
       <div>
         
-        <Navbar />
-
+        <Navbar favorites={favorites} setFavorites={setFavorites} />
+    
         <Toaster />
         <Routes>
           <Route path="/" element={<HomePage />} />
           <Route path="/about" element={<About />} />
           <Route path="/monsters" element={<MonsterList />} />
-          <Route path="/MonsterCard/:monsterId" element={<MonsterCard />} />
+          <Route path="/monster-card/:monsterId" element={<MonsterDetails setFavorites={setFavorites} favorites={favorites} />} />
           <Route path="/new-monster" element={<AddMonsterForm />} />
-          <Route path="/notFound" element={<NotFound />} />
+          <Route path="/not-found" element={<NotFound />} />
+          <Route path="/related-links" element={<RealatedLinks />} />
+
         </Routes>
-        <Footer />
+        {/* <Footer /> */}
       </div>
     </>
   );

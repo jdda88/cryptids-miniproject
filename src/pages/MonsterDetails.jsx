@@ -1,8 +1,8 @@
-import React from 'react'
+import MonsterCard from "../components/MonsterCard.jsx"
 
-function MonsterDetails() {
+function MonsterDetails({favorites, setFavorites}) {
   return (
-    <div>MonsterDetails</div>
+    <div><MonsterCard setFavorites={setFavorites} favorites={favorites}/></div>
   )
 }
 

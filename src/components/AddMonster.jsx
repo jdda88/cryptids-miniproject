@@ -3,7 +3,7 @@ import axios from "axios";
 import { useNavigate } from "react-router-dom";
 import { Modal, Button } from "bootstrap";
 import toast from "react-hot-toast";
-
+import * as bootstrap from "bootstrap"
 function AddMonsterForm({ fetchMonsters }) {
   const [name, setName] = useState("");
   const [description, setDescription] = useState("");
@@ -47,9 +47,9 @@ const modal = document.getElementById("MonsterFormModal")
       const modalInstance = bootstrap.Modal.getInstance(modal)
       modalInstance.hide()
       toast.success("Monster created Successfully!")
+      fetchMonsters();
       }
       
-     fetchMonsters();
     } catch (error) {
       console.log(error);
     }
@@ -58,8 +58,9 @@ const modal = document.getElementById("MonsterFormModal")
   return (
     <>
       <button
+      id="add-button"
         type="button"
-        className="btn btn-primary"
+        className="btn btn-outline-dark"
         data-bs-toggle="modal"
         data-bs-target="#MonsterFormModal"
       >

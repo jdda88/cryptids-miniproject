@@ -3,13 +3,28 @@ import React, { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import EditLastSeen from "../pages/EditLastSeen";
 import DeleteMonster from "../pages/DeleteMonster";
+import FavoritesList from "./FavoritesList";
 
 const API_URL = "https://cats-dogs-123123.adaptable.app/monsters/";
 
-function MonsterCard() {
+function MonsterCard({ setFavorites , favorites}) {
   const [monster, setMonster] = useState(null);
   const [isFavorite, setIsFavorite] = useState(false);
   const { monsterId } = useParams();
+
+  const handleFavorite = (monster) => {
+    console.log(favorites)
+    setFavorites((prev) =>
+     prev && prev.find(current => current.id === monster.id)
+        ? prev.filter((current) => current.id !== monster.id)
+        : [...prev, monster]
+    );
+  };
+
+  useEffect(()=> {
+    localStorage.setItem("favoritesArray", JSON.stringify(favorites))
+
+  }, [favorites])
 
   const fetchSingleMonster = async () => {
     try {
@@ -23,12 +38,10 @@ function MonsterCard() {
     fetchSingleMonster();
   }, [monsterId]);
 
-  const handleFavorite = () => {
-    console.log("added monster to favorites");
-  };
+
 
   return (
-    <div >
+    <div>
       {" "}
       {monster && (
         <div
@@ -40,36 +53,38 @@ function MonsterCard() {
             display: "flex",
             justifyContent: "center",
             alignItems: "center",
-            minHeight: "80vh",
+            minHeight: "100vh",
           }}
         >
-          <div className="container" style={{ width: "300px" }}>
+          <div className="container " style={{ width: "300px" }}>
             <div className="col ">
               <img
                 className="card-img-top ="
-                src="https://res.cloudinary.com/dprkq4xne/image/upload/v1717443707/Monster-project/cthulhu_e0zzvu.png"
+                src={monster.image}
                 alt="Card image"
               />
               <div className="card-body">
-                <h4 className="card-title">{monster.name}</h4>
-                <h4> Description: {monster.description}</h4>
-                <h4>Location: {monster.location}</h4>
-                <h4>Type: {monster.type}</h4>
-                <h4>Scare Rating: {monster.scareRating}</h4>
-                <h4>{monster.invoqueInstructions}</h4>
-                <h4>Last Seen: {monster.lastSeen}</h4>
-                <div className="text-center">
+                <h4 id="monster-name" className="card-title m-2">{monster.name}</h4>
+                <h4 className="m-2"> Description: {monster.description}</h4>
+                <h4 className="m-2">Location: {monster.location}</h4>
+                <h4 className="m-2">Type: {monster.type}</h4>
+                <h4 className="m-2">Scare Rating: {monster.scareRating}</h4>
+                <h4 className="m-2">{monster.invoqueInstructions}</h4>
+                <h4 className="m-2">Last Seen: {monster.lastSeen}</h4>
+                <div className="text-center ">
+
                   <button
-                    className={`btn ${
-                      isFavorite ? "btn-danger" : "btn-outline-light"
-                    } mb-2`}
+                    id="favorite-button" className={`btn ${
+                      favorites && favorites.find(current => current.id === monster.id) ? "btn-danger" : "btn-transparent"
+                    } m-3`}
                     onClick={() =>
-                      setIsFavorite((prevIsFavorite) => !prevIsFavorite)
+                     handleFavorite(monster)
                     }
                   >
                     {" "}
                     ❤️{" "}
                   </button>
+                  <br />
                 </div>
               </div>
             </div>
@@ -77,7 +92,7 @@ function MonsterCard() {
         </div>
       )}{" "}
       <EditLastSeen fetchSingleMonster={fetchSingleMonster} monster={monster} />
-      <div>
+      <div className="m-5 pb-5">
         <DeleteMonster monster={monster} />
       </div>
     </div>
@@ -85,11 +100,3 @@ function MonsterCard() {
 }
 
 export default MonsterCard;
-
-// "id": 1,
-// "name": "Bigfoot",
-// "location": "North America",
-// "description": "A large, ape-like creature said to inhabit forests.",
-// "type": "ground",
-// "scareRating": 7,
-// "invoqueInstructions": null
