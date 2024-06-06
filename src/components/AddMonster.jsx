@@ -3,7 +3,8 @@ import axios from "axios";
 import { useNavigate } from "react-router-dom";
 import { Modal, Button } from "bootstrap";
 import toast from "react-hot-toast";
-import * as bootstrap from "bootstrap"
+import * as bootstrap from "bootstrap";
+
 function AddMonsterForm({ fetchMonsters }) {
   const [name, setName] = useState("");
   const [description, setDescription] = useState("");
@@ -27,7 +28,7 @@ function AddMonsterForm({ fetchMonsters }) {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    console.log("Pressing the button for add monster!")
+    console.log("Pressing the button for add monster!");
     try {
       const response = await axios.post(
         "https://cats-dogs-123123.adaptable.app/monsters",
@@ -42,14 +43,13 @@ function AddMonsterForm({ fetchMonsters }) {
           image,
         }
       );
-      if(response.status === 200 || response.status === 201){
-const modal = document.getElementById("MonsterFormModal") 
-      const modalInstance = bootstrap.Modal.getInstance(modal)
-      modalInstance.hide()
-      toast.success("Monster created Successfully!")
-      fetchMonsters();
+      if (response.status === 200 || response.status === 201) {
+        const modal = document.getElementById("MonsterFormModal");
+        const modalInstance = bootstrap.Modal.getInstance(modal);
+        modalInstance.hide();
+        toast.success("Monster created Successfully!");
+        fetchMonsters();
       }
-      
     } catch (error) {
       console.log(error);
     }
@@ -58,7 +58,7 @@ const modal = document.getElementById("MonsterFormModal")
   return (
     <>
       <button
-      id="add-button"
+        id="add-button"
         type="button"
         className="btn btn-outline-dark"
         data-bs-toggle="modal"
@@ -75,7 +75,7 @@ const modal = document.getElementById("MonsterFormModal")
         aria-hidden="true"
       >
         <div className="modal-dialog" role="document">
-          <div className="modal-content">
+          <div id="add-form" className="modal-content">
             <div className="modal-header">
               <h5 className="modal-title" id="exampleModalLabel">
                 Modal title
@@ -85,6 +85,7 @@ const modal = document.getElementById("MonsterFormModal")
               <form onSubmit={handleSubmit} id="MonsterForm">
                 <label>Name</label>
                 <input
+                  id="input-bar"
                   className="form-control mb-4"
                   name="name"
                   type="text"
@@ -95,6 +96,7 @@ const modal = document.getElementById("MonsterFormModal")
                 />
                 <label>Description</label>
                 <input
+                  id="input-bar"
                   className="form-control"
                   name="description"
                   type="text"
@@ -105,6 +107,7 @@ const modal = document.getElementById("MonsterFormModal")
                 />
                 <label>Location</label>
                 <input
+                  id="input-bar"
                   className="form-control mb-4"
                   name="location"
                   type="text"
@@ -115,6 +118,7 @@ const modal = document.getElementById("MonsterFormModal")
                 />
                 <label>Type</label>
                 <input
+                  id="input-bar"
                   className="form-control"
                   name="type"
                   type="text"
@@ -125,6 +129,7 @@ const modal = document.getElementById("MonsterFormModal")
                 />
                 <label>Scare Rating</label>
                 <input
+                  id="input-bar"
                   className="form-control"
                   name="rating"
                   type="number"
@@ -135,6 +140,7 @@ const modal = document.getElementById("MonsterFormModal")
                 />
                 <label>Instructions</label>
                 <input
+                  id="input-bar"
                   className="form-control"
                   name="instructions"
                   type="text"
@@ -145,6 +151,7 @@ const modal = document.getElementById("MonsterFormModal")
                 />
                 <label>Last Seen: </label>
                 <input
+                  id="input-bar"
                   className="form-control"
                   name="instructions"
                   type="text"
@@ -155,6 +162,7 @@ const modal = document.getElementById("MonsterFormModal")
                 />
                 <label>Image</label>
                 <input
+                  id="input-bar"
                   name="image"
                   type="url"
                   required
@@ -167,15 +175,17 @@ const modal = document.getElementById("MonsterFormModal")
             </div>
             <div className="modal-footer">
               <button
+                id="form-btn"
                 type="button"
-                className="btn btn-secondary"
+                className="btn btn-dark"
                 data-bs-dismiss="modal"
               >
                 Close
               </button>
               <button
+                id="form-btn"
                 type="submit"
-                className="btn btn-primary"
+                className="btn btn-dark"
                 form="MonsterForm"
               >
                 Save Changes

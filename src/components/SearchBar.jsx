@@ -13,8 +13,9 @@ function SearchBar() {
 const styleFunction = {
   control: (base) => ({
     ...base,
-    width: '400px', // Adjust as needed
-    minWidth: '100%', // Ensures the width expands to fit content
+    width: '400px', 
+    minWidth: '100%', 
+
 
   }),
 };
@@ -36,7 +37,7 @@ const styleFunction = {
   }, []);
 
   return (
-  <div style={{ display: "flex", alignItems: "center" }}>
+  <div className="search-container" style={{ display: "flex", alignItems: "center" }}>
   
 
        <Select 

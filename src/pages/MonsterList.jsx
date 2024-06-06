@@ -44,7 +44,7 @@ function MonsterList() {
                   src={monster.image}
                   alt="Card image"
                 />
-                <div className="card-body text-center">
+                <div  id="text-container" className="card-body text-center">
                   <h4 id="monster-name"  style={{ color: "white" }}>
                     {monster.name}
                   </h4>

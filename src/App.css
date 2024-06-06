@@ -8,17 +8,54 @@
 }
 #monster-card-container{
 
-width: 50vh;
-height: 80vh;
+width: 20rem;
+/* height: 40rem; */
+}
+#add-form{
+    background-color: #820f09dc;
+    color: rgba(158, 130, 87, 0.993);}
+#input-bar{
+    background-color: #986c6cd8;
+    border-color: black;
 }
 
+#monster-name {
+    font-size: 40px;
+    font-family: "Cormorant Garamond", serif !important;
+    font-weight: 600;
 
+
+}
+#text-container{
+    height: 20vh;
+}
 /* NAVBAR CSS */
 
 .navbar{
     background-color: #25282a !important;
+    display: flex;
+    justify-content: space-between; /* Logo and links at opposite ends */
+    background-color: #333;
+    color: #fff;
+    padding: 10px;
 }
 
+@media screen and (max-width: 480px) {
+    .navbar {
+        flex-direction: column;
+    }
+}
+
+.hamburger {
+    display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  width: 30px;
+  height: 20px;
+  background: transparent;
+  border: none;
+  cursor: pointer;
+}
 /* ABOUT PAGE */
 
 /* HOMEPAGE */
@@ -56,9 +93,10 @@ h3 {
     background-color: #821009 ;
     border-radius: 10px;
 }
-.car-container{
+/* .car-container{
     background-image: url(https://res.cloudinary.com/dprkq4xne/image/upload/v1717525356/Monster-project/scroll-background2_iubsgr.png);
-}
+
+} */
 
 .about {
     align-items: center;
@@ -77,20 +115,17 @@ br {
     font-size: 25px;
 }
 
-#monster-name {
-    font-size: 60px;
-    font-family: "Cormorant Garamond", serif !important;
-    font-weight: 600;
-}
+
 
 h4 {
     font-size: 30px;
     font-family: "Cormorant Garamond", serif !important;
     font-weight: 200;
+    color: rgba(158, 130, 87, 0.993);
 }
 
-#search-bar {
-    background-color: black;
+.search-container {
+     color: black;
 }
 
 
@@ -115,6 +150,12 @@ font-family: fantasy;
     background-color: #821009
     
 }
+
+.form-control::placeholder { /* Chrome, Firefox, Opera, Safari 10.1+ */
+    color: rgb(205, 192, 192);
+    opacity: 1; /* Firefox */
+}
+
 
 /* FONTS */
 .cormorant-garamond-light {

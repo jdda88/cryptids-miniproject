@@ -9,7 +9,7 @@ const API_URL = "https://cats-dogs-123123.adaptable.app/monsters/";
 function DeleteMonster({ monster }) {
 
   const navigate = useNavigate();
-  const handleDelete = async (e) => {
+  const handleDelete = async () => {
     // e.preventDefault();
     try {
         const confirmation = confirm("Are you sure you want to delete?")
