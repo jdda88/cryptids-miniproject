@@ -13,10 +13,10 @@ function About() {
         programming. Join us as we explore the world's most intriguing cryptids
         through our new website!
       </p>{" "}
-      <br />
+
       <h2>Features</h2>
-      <br />
-      <p className="w-50 text-center"></p> Welcome to The Cryptid Collection,
+
+      <p id="about-text" className="w-50 text-center"> Welcome to The Cryptid Collection,
       your ultimate online resource for information about monsters, cryptids,
       and mythical creatures from around the globe! Whether you're a seasoned
       cryptozoologist or a curious newcomer, our interactive platform allows you
@@ -25,19 +25,15 @@ function About() {
       community of enthusiasts in documenting and discovering the mysteries of
       the unknown, all while diving into the fascinating world of legendary
       beings and elusive entities. Unleash your curiosity and help us build the
-      most comprehensive database of mythical creatures on the web!
-      <br />
+      most comprehensive database of mythical creatures on the web!</p>
+
       <h3>The team</h3>
-      <br />
       <p className="w-50 text-center">
         Our team consists of Anna and JD, two passionate web development
         learners. We're having fun building projects like The Cryptid
         Collection, combining our love for coding with our fascination for
         mythical creatures.
       </p>
-      <br />
-      <br />
-      <br />
       <br />
       <br />
       <br />

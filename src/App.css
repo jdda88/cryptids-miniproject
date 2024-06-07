@@ -6,6 +6,9 @@
     background-attachment: fixed;
     
 }
+html{
+    height: 100%;
+}
 #monster-card-container{
 
 width: 20rem;
@@ -217,4 +220,3 @@ font-family: fantasy;
     font-weight: 700;
     font-style: italic;
   }
-  
